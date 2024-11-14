@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Case Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/text-case-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Text Case Converter</h1>
+    <p>Convert your text to uppercase, lowercase, or capitalized case easily.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text below and choose the transformation:</p>
+      <textarea id="text-input" placeholder="Enter text here..." rows="10"></textarea>
+      
+      <button onclick="toUpperCase()">To Uppercase</button>
+      <button onclick="toLowerCase()">To Lowercase</button>
+      <button onclick="toCapitalizedCase()">To Capitalized Case</button>
+
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function toUpperCase() {
+      const text = document.getElementById("text-input").value;
+      document.getElementById("result").innerHTML = text.toUpperCase();
+    }
+
+    function toLowerCase() {
+      const text = document.getElementById("text-input").value;
+      document.getElementById("result").innerHTML = text.toLowerCase();
+    }
+
+    function toCapitalizedCase() {
+      const text = document.getElementById("text-input").value;
+      const capitalized = text
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      document.getElementById("result").innerHTML = capitalized;
+    }
+  </script>
+</body>
+</html>

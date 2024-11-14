@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hex to RGB Converter</title>
+  <link rel="stylesheet" href="../tools-css/hex-to-rgb-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Hex to RGB Converter</h1>
+    <p>Convert HEX color values to RGB format.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter HEX color code below to convert it to RGB:</p>
+
+      <input type="text" id="hexInput" placeholder="#FFFFFF">
+      <button onclick="convertHexToRGB()">Convert</button>
+
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Hex to RGB Converter by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function convertHexToRGB() {
+      const hex = document.getElementById("hexInput").value;
+      if (hex.match(/^#([0-9A-Fa-f]{3}){1,2}$/)) {
+        const color = hex.substring(1);
+        const r = parseInt(color.length === 3 ? color[0] + color[0] : color.substring(0, 2), 16);
+        const g = parseInt(color.length === 3 ? color[1] + color[1] : color.substring(2, 4), 16);
+        const b = parseInt(color.length === 3 ? color[2] + color[2] : color.substring(4, 6), 16);
+        document.getElementById("result").innerHTML = `RGB: <strong>rgb(${r}, ${g}, ${b})</strong>`;
+      } else {
+        document.getElementById("result").innerHTML = "Invalid HEX color code.";
+      }
+    }
+  </script>
+</body>
+</html>

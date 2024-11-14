@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Character Counter Tool - Count characters in your text with or without spaces. Easily track character count for SEO, social media posts, and more.">
+  <meta name="keywords" content="character counter, text character count, text tool, character counter tool, SEO tools, count characters, word count, character counting tool">
+  <meta name="author" content="Jphabs Khalifa">
+  <title>Character Counter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/character-counter.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Character Counter Tool</h1>
+    <p>Count the characters in your text, including or excluding spaces. A must-have tool for SEO, social media, and more!</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+            <textarea id="text-input" placeholder="Enter text here..." rows="10"></textarea>
+      
+      <button onclick="countCharacters()">Count Characters</button>
+      
+      <div id="result"></div>
+      <h2>How to Use the Character Counter</h2>
+      <p>Simply paste or type your text into the box below. The tool will calculate and display the total character count, both with and without spaces.</p>
+      
+      <p><strong>Why use this tool?</strong> This character counter is ideal for checking character limits on social media posts, SEO meta descriptions, blog posts, and more. It helps ensure your text fits within the required limits.</p>
+      
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa. All Rights Reserved.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function countCharacters() {
+      const text = document.getElementById("text-input").value;
+      const includeSpaces = text.length;
+      const excludeSpaces = text.replace(/\s+/g, '').length;
+      document.getElementById("result").innerHTML = `
+        <strong>Total characters (including spaces): </strong>${includeSpaces}<br>
+        <strong>Total characters (excluding spaces): </strong>${excludeSpaces}
+      `;
+    }
+  </script>
+</body>
+</html>

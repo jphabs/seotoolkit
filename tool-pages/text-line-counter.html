@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Line Counter</title>
+  <link rel="stylesheet" href="../tools-css/text-line-counter.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Text Line Counter</h1>
+    <p>Count the number of lines in a given text.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text below to count the number of lines:</p>
+
+      <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+      <button onclick="countLines()">Count Lines</button>
+
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Text Line Counter by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function countLines() {
+      const text = document.getElementById("inputText").value;
+      const lines = text.split('\n').length;
+      document.getElementById("result").innerHTML = `Number of lines: <strong>${lines}</strong>`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reverse Text Tool for quick text manipulation. Easily reverse your text for SEO and content use.">
+  <meta name="keywords" content="Reverse text, Text tool, SEO text manipulation, Reverse content">
+  <meta name="author" content="Jphabs Khalifa">
+  <title>Reverse Text Tool | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/reverse-text.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Reverse Text Tool</h1>
+    <p>Easily reverse your text for quick manipulation and SEO content editing.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter the text you want to reverse:</p>
+      <textarea id="text-input" placeholder="Enter your text here..."></textarea>
+      <button onclick="reverseText()">Reverse Text</button>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function reverseText() {
+      const inputText = document.getElementById("text-input").value;
+      const reversedText = inputText.split('').reverse().join('');
+      document.getElementById("result").innerHTML = `Reversed Text: <strong>${reversedText}</strong>`;
+    }
+  </script>
+</body>
+</html>

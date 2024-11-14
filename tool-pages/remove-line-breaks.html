@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Line Breaks</title>
+  <link rel="stylesheet" href="../tools-css/remove-line-breaks.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Remove Line Breaks</h1>
+    <p>Removes all line breaks from a text or replaces them with spaces.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text below to remove all line breaks:</p>
+
+      <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+      <button onclick="removeLineBreaks()">Remove Line Breaks</button>
+
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Remove Line Breaks by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function removeLineBreaks() {
+      const text = document.getElementById("inputText").value;
+      const result = text.replace(/(\r\n|\n|\r)/gm, " ");
+      document.getElementById("result").innerHTML = `Processed Text: <strong>${result}</strong>`;
+    }
+  </script>
+</body>
+</html>

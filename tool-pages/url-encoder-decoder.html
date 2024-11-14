@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoder/Decoder | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/url-encoder-decoder.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>URL Encoder/Decoder</h1>
+    <p>Encode or decode URLs for safe transmission over the web.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your URL below to encode or  it:</p>
+
+      <label for="input-text">Text:</label>
+      <textarea id="input-text" rows="4" placeholder="Enter your URL here..."></textarea>
+
+      <label for="action">Choose Action:</label>
+      <select id="action">
+        <option value="encode">Encode URL</option>
+        <option value="decode">Decode URL</option>
+      </select>
+
+      <button onclick="processUrl()">Process URL</button>
+
+      <div id="result"></div>
+      <br>
+      	
+      </br>
+         <section class="article">
+      <h2>Why is URL Encoding Important?</h2>
+      <p>URL encoding plays a crucial role in ensuring that the web addresses you send and receive are properly formatted for browsers and web servers. It converts characters that have special meanings in URLs into a standardized format that can be safely transmitted. Without encoding, certain characters might cause errors or alter the intended URL.</p>
+
+      <h2>How URL Decoding Helps with Web Development</h2>
+      <p>Decoding URLs is equally important for web developers. It helps restore a URL to its original form, making it easier to process and display data. For instance, if you receive a URL with encoded characters, decoding it makes the information legible again, allowing you to work with clean data.</p>
+
+      <h2>Who Can Benefit from Using This Tool?</h2>
+      <p>Our URL Encoder/Decoder tool is designed for anyone who works with URLs, especially developers, content managers, and website owners. It can be particularly useful for:</p>
+<ul class="custom-list">
+  <li class="custom-list-item">Developers encoding and decoding URLs in web applications.</li>
+  <li class="custom-list-item">Webmasters ensuring that their website URLs are correctly formatted.</li>
+  <li class="custom-list-item">Content creators working with hyperlinks in blogs and articles.</li>
+</ul>
+    </section>
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function processUrl() {
+      const inputText = document.getElementById("input-text").value;
+      const action = document.getElementById("action").value;
+      let result;
+
+      if (action === "encode") {
+        result = encodeURIComponent(inputText);
+      } else if (action === "decode") {
+        result = decodeURIComponent(inputText);
+      }
+
+      document.getElementById("result").innerHTML = `Processed Result: <strong>${result}</strong>`;
+    }
+  </script>
+</body>
+</html>

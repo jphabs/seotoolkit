@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoder/Decoder | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/base64-encoder-decoder.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Base64 Encoder/Decoder</h1>
+    <p>Encode or Decode your data to Base64 format.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Choose your action below:</p>
+
+      <div class="input-group">
+        <label for="input-text">Input Text:</label>
+        <textarea id="input-text" rows="4" placeholder="Enter text to encode or decode"></textarea>
+      </div>
+
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="action" id="encode" checked> Encode to Base64
+        </label>
+        <label>
+          <input type="radio" name="action" id="decode"> Decode from Base64
+        </label>
+      </div>
+
+      <button onclick="processBase64()">Process</button>
+
+      <div id="result" style="display: none;">
+        <p>Result:</p>
+        <p id="output"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function processBase64() {
+      const inputText = document.getElementById('input-text').value;
+      const isEncode = document.getElementById('encode').checked;
+      
+      if (isEncode) {
+        // Base64 Encoding
+        const encoded = btoa(inputText);
+        document.getElementById('output').textContent = encoded;
+      } else {
+        // Base64 Decoding
+        try {
+          const decoded = atob(inputText);
+          document.getElementById('output').textContent = decoded;
+        } catch (e) {
+          document.getElementById('output').textContent = 'Invalid Base64 input.';
+        }
+      }
+      document.getElementById('result').style.display = 'block';
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

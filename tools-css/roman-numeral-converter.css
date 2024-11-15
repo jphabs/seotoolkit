@@ -1,3 +1,4 @@
+/* General Reset and Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,14 +15,24 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  flex: 1;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Navigation */
 nav ul {
   list-style: none;
   padding: 0;
   margin: 20px 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
-  display: inline;
   margin: 0 15px;
 }
 
@@ -31,14 +42,7 @@ nav ul li a {
   font-weight: bold;
 }
 
-.container {
-  flex: 1;
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
+/* Hero Section */
 .hero {
   background-color: #4a90e2;
   color: #fff;
@@ -58,6 +62,7 @@ nav ul li a {
   opacity: 0.9;
 }
 
+/* Tool Description Section */
 .tool-description {
   background-color: #fff;
   padding: 20px;
@@ -71,17 +76,22 @@ nav ul li a {
   margin-bottom: 10px;
 }
 
-#text-input, #binary-input {
-  width: 100%;
-  height: 150px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-top: 10px;
+/* Labels and Inputs */
+label {
   font-size: 1em;
-  resize: vertical;
+  margin-right: 10px;
+  margin-top: 15px;
+  display: inline-block;
 }
 
+input[type="number"],
+input[type="text"] {
+  margin: 5px 0 15px;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Button Styles */
 button {
   width: 100%;
   display: inline-block;
@@ -100,18 +110,25 @@ button:hover {
   background-color: #357ab8;
 }
 
+/* Result Display */
 #result {
   margin-top: 15px;
-  font-weight: bold;
   color: #4a90e2;
-  padding: 10px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
+#result p {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#conversion-output {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  color: #333;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 15px 20px;
@@ -126,29 +143,6 @@ footer {
 
 footer p {
   font-size: 0.9em;
-}
-
-.instructions {
-  padding: 20px; /* Increased padding for better spacing */
-  margin-top: 20px;
-  margin-bottom: 20px; /* Added bottom margin for separation */
-}
-
-.instructions h2 {
-  font-size: 1.2em;
-  color: #4a90e2;
-  margin-bottom: 15px; /* Increased margin for better visual spacing */
-}
-
-.instructions ol {
-  padding-left: 30px;
-  margin-left: 0;
-}
-
-.instructions ol li {
-  margin-bottom: 15px;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 /* Mobile View */

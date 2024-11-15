@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="../tools-css/bmi-calculator.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>BMI Calculator</h1>
+    <p>Calculate your Body Mass Index (BMI) using height and weight inputs.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your details to calculate your BMI:</p>
+
+      <div class="input-group">
+        <label for="height">Height (in cm):</label>
+        <input type="number" id="height" placeholder="Enter height in cm" required>
+      </div>
+
+      <div class="input-group">
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" placeholder="Enter weight in kg" required>
+      </div>
+
+      <button onclick="calculateBMI()">Calculate BMI</button>
+
+      <div id="result" style="display: none;">
+        <p>Your BMI is:</p>
+        <p id="bmi-output"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> BMI Calculator by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById("height").value);
+      const weight = parseFloat(document.getElementById("weight").value);
+
+      if (height > 0 && weight > 0) {
+        const heightInMeters = height / 100; // convert cm to meters
+        const bmi = weight / (heightInMeters * heightInMeters);
+        const bmiResult = bmi.toFixed(2);
+
+        document.getElementById("bmi-output").innerHTML = `<strong>${bmiResult}</strong>`;
+        document.getElementById("result").style.display = "block"; // Show result when BMI is calculated
+      } else {
+        document.getElementById("bmi-output").innerHTML = "Please enter valid height and weight values.";
+        document.getElementById("result").style.display = "block";
+      }
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  
+</body>
+</html>

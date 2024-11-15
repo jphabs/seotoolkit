@@ -71,7 +71,7 @@ nav ul li a {
   margin-bottom: 10px;
 }
 
-#text-input {
+#text-input, #binary-input {
   width: 100%;
   height: 150px;
   padding: 10px;

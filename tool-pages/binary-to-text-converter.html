@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary to Text Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/text-case-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Binary to Text Converter</h1>
+    <p>Convert binary code into human-readable text instantly.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter binary code below to decode it into text:</p>
+      <textarea id="binary-input" placeholder="Enter binary here..." rows="10"></textarea>
+      
+      <button onclick="convertBinaryToText()">Convert to Text</button>
+
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function convertBinaryToText() {
+      const binaryInput = document.getElementById("binary-input").value.trim();
+      const binaryArray = binaryInput.split(' ');
+      let resultText = "";
+
+      try {
+        binaryArray.forEach(binary => {
+          const charCode = parseInt(binary, 2);
+          if (isNaN(charCode)) throw new Error("Invalid binary input");
+          resultText += String.fromCharCode(charCode);
+        });
+
+        document.getElementById("result").innerHTML = resultText;
+      } catch (error) {
+        document.getElementById("result").innerHTML = "Error: Invalid binary input.";
+      }
+    }
+  </script>
+</body>
+</html>

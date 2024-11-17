@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/color-picker.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Color Picker Tool</h1>
+    <p>Select and preview colors in HEX, RGB, or HSL formats.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Choose a color to see its values:</p>
+
+      <div class="input-group">
+        <label for="color-input">Select Color:</label>
+        <input type="color" id="color-input" value="#4a90e2">
+      </div>
+
+      <div id="color-values">
+        <p><strong>HEX:</strong> <span id="hex-value">#4a90e2</span></p>
+        <p><strong>RGB:</strong> <span id="rgb-value">74, 144, 226</span></p>
+        <p><strong>HSL:</strong> <span id="hsl-value">210, 71%, 59%</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Color Picker Logic
+    const colorInput = document.getElementById("color-input");
+    const hexValue = document.getElementById("hex-value");
+    const rgbValue = document.getElementById("rgb-value");
+    const hslValue = document.getElementById("hsl-value");
+
+    colorInput.addEventListener("input", () => {
+      const color = colorInput.value;
+
+      // Update HEX
+      hexValue.textContent = color;
+
+      // Convert to RGB
+      const r = parseInt(color.substr(1, 2), 16);
+      const g = parseInt(color.substr(3, 2), 16);
+      const b = parseInt(color.substr(5, 2), 16);
+      rgbValue.textContent = `${r}, ${g}, ${b}`;
+
+      // Convert to HSL
+      const rNorm = r / 255;
+      const gNorm = g / 255;
+      const bNorm = b / 255;
+      const max = Math.max(rNorm, gNorm, bNorm);
+      const min = Math.min(rNorm, gNorm, bNorm);
+      let h = 0,
+        s = 0,
+        l = (max + min) / 2;
+
+      if (max !== min) {
+        const delta = max - min;
+        s = l > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+        switch (max) {
+          case rNorm:
+            h = (gNorm - bNorm) / delta + (gNorm < bNorm ? 6 : 0);
+            break;
+          case gNorm:
+            h = (bNorm - rNorm) / delta + 2;
+            break;
+          case bNorm:
+            h = (rNorm - gNorm) / delta + 4;
+            break;
+        }
+        h /= 6;
+      }
+
+      hslValue.textContent = `${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%`;
+    });
+  </script>
+</body>
+</html>

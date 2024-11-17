@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/stopwatch.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Stopwatch</h1>
+    <p>A simple and functional stopwatch tool for tracking time.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Use the stopwatch below to measure time:</p>
+
+      <div id="stopwatch">
+        <div id="time-display">00:00:00</div>
+        <div class="button-group">
+          <button onclick="startStopwatch()">Start</button>
+          <button onclick="stopStopwatch()">Stop</button>
+          <button onclick="resetStopwatch()">Reset</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    let timerInterval;
+    let elapsedSeconds = 0;
+
+    function startStopwatch() {
+      if (!timerInterval) {
+        timerInterval = setInterval(() => {
+          elapsedSeconds++;
+          document.getElementById("time-display").textContent = formatTime(elapsedSeconds);
+        }, 1000);
+      }
+    }
+
+    function stopStopwatch() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetStopwatch() {
+      stopStopwatch();
+      elapsedSeconds = 0;
+      document.getElementById("time-display").textContent = "00:00:00";
+    }
+
+    function formatTime(seconds) {
+      const hrs = String(Math.floor(seconds / 3600)).padStart(2, "0");
+      const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+      const secs = String(seconds % 60).padStart(2, "0");
+      return `${hrs}:${mins}:${secs}`;
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

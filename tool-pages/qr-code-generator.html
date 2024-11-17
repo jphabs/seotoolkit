@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/qr-code-generator.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- Ensure QRCode library is loaded -->
+</head>
+<body>
+  <header class="hero">
+    <h1>QR Code Generator</h1>
+    <p>Generate a QR code for quick and easy sharing of text or links.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text or URL below to generate a QR code:</p>
+
+      <div class="input-group">
+        <input type="text" id="text-input" placeholder="Enter text or URL">
+      </div>
+
+      <button id="generate-btn">Generate QR Code</button>
+
+      <div id="qr-code-result" style="display: none;">
+        <p>Generated QR Code:</p>
+        <canvas id="qr-code"></canvas>
+        <button id="download-btn" style="margin-top: 10px;">Download QR Code</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Reference DOM elements
+      const generateBtn = document.getElementById("generate-btn");
+      const textInput = document.getElementById("text-input");
+      const qrCodeCanvas = document.getElementById("qr-code");
+      const qrCodeResult = document.getElementById("qr-code-result");
+      const downloadBtn = document.getElementById("download-btn");
+
+      // Event listener for button click
+      generateBtn.addEventListener("click", () => {
+        const text = textInput.value.trim();
+
+        if (!text) {
+          alert("Please enter text or URL.");
+          return;
+        }
+
+        qrCodeResult.style.display = "block";
+
+        // Clear existing QR code
+        qrCodeCanvas.getContext("2d").clearRect(0, 0, qrCodeCanvas.width, qrCodeCanvas.height);
+
+        // Generate QR code
+        QRCode.toCanvas(qrCodeCanvas, text, { width: 256, height: 256 }, (error) => {
+          if (error) {
+            console.error("Error generating QR Code:", error);
+            alert("Failed to generate QR Code. Please try again.");
+          } else {
+            console.log("QR Code generated successfully!");
+          }
+        });
+      });
+
+      // Event listener for download button
+      downloadBtn.addEventListener("click", () => {
+        const link = document.createElement("a");
+        link.download = "seotoolkit-qr-code.png"; // Default filename
+        link.href = qrCodeCanvas.toDataURL("image/png"); // Convert canvas to PNG data URL
+        link.click(); // Trigger download
+      });
+
+      // Set current year in footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

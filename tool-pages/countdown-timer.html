@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/countdown-timer.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Countdown Timer</h1>
+    <p>Set a countdown timer for a specific duration or date and display the remaining time.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Customize your countdown timer by selecting a specific duration or setting a specific date:</p>
+
+      <div class="input-group">
+        <label for="countdown-date">Set a Date (yyyy-mm-dd):</label>
+        <input type="date" id="countdown-date">
+      </div>
+
+      <div class="input-group">
+        <label for="countdown-duration">Set Duration (in seconds):</label>
+        <input type="number" id="countdown-duration" value="60" min="1">
+      </div>
+
+      <button onclick="startCountdown()">Start Countdown</button>
+
+      <div id="countdown-result" style="display: none;">
+        <p>Remaining Time:</p>
+        <p id="countdown-output"></p>
+      </div>
+    </section>
+    <br>
+
+    <section class="blog-post">
+      <h2>About the Countdown Timer Tool</h2>
+      <p>Our Countdown Timer is a simple yet powerful tool that allows you to set a countdown for a specific date or duration. Whether you're working on a project deadline, organizing an event, or simply need to count down to an important moment, this tool makes it easy to keep track of time.</p>
+      <br>
+
+      <p>With this timer, you can choose to either set a specific date or input a duration in seconds. Once activated, the countdown will begin, and you will see the remaining time updated in real-time.</p>
+      <br>
+
+      <p>Features of the Countdown Timer:</p>
+      <ul 
+style="padding-left: 20px; list-style-position: outside;">
+        <li><strong>Customizable Duration:</strong> You can set the countdown for any duration in seconds, making it perfect for any situation.</li>
+        <li><strong>Set Specific Dates:</strong> If you have a specific event or deadline in mind, you can set the countdown to stop at a certain date and time.</li>
+        <li><strong>Real-time Updates:</strong> The countdown timer updates automatically to show you exactly how much time remains until the specified duration or date.</li>
+      </ul>
+      <br>
+
+      <p>Use this tool to stay on track with your time-sensitive tasks, projects, and events. It's an ideal companion for anyone who needs to stay organized and manage their time effectively.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function startCountdown() {
+      const countdownDate = document.getElementById("countdown-date").value;
+      const countdownDuration = document.getElementById("countdown-duration").value;
+      const output = document.getElementById("countdown-output");
+
+      if (countdownDate) {
+        // Countdown to a specific date
+        const targetDate = new Date(countdownDate).getTime();
+        const interval = setInterval(function() {
+          const currentTime = new Date().getTime();
+          const remainingTime = targetDate - currentTime;
+
+          if (remainingTime <= 0) {
+            clearInterval(interval);
+            output.innerHTML = "Countdown complete!";
+          } else {
+            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+            output.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+          }
+        }, 1000);
+      } else if (countdownDuration) {
+        // Countdown for a specific duration in seconds
+        const targetTime = new Date().getTime() + countdownDuration * 1000;
+        const interval = setInterval(function() {
+          const currentTime = new Date().getTime();
+          const remainingTime = targetTime - currentTime;
+
+          if (remainingTime <= 0) {
+            clearInterval(interval);
+            output.innerHTML = "Countdown complete!";
+          } else {
+            const seconds = Math.floor(remainingTime / 1000);
+            output.innerHTML = seconds + " seconds remaining";
+          }
+        }, 1000);
+      } else {
+        output.innerHTML = "Please set a date or duration.";
+      }
+
+      document.getElementById("countdown-result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

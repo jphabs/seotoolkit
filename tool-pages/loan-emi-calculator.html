@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan EMI Calculator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/password-generator.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Loan EMI Calculator</h1>
+    <p>Calculate your Equated Monthly Installment (EMI) quickly and accurately.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Input the loan amount, interest rate, and tenure below to calculate your EMI:</p>
+
+      <div class="input-group">
+        <label for="loan-amount">Loan Amount:</label>
+        <input type="number" id="loan-amount" placeholder="Enter loan amount">
+      </div>
+
+      <div class="input-group">
+        <label for="interest-rate">Interest Rate (%):</label>
+        <input type="number" id="interest-rate" placeholder="Enter annual interest rate">
+      </div>
+
+      <div class="input-group">
+        <label for="loan-tenure">Loan Tenure (years):</label>
+        <input type="number" id="loan-tenure" placeholder="Enter loan tenure in years">
+      </div>
+
+      <button onclick="calculateEMI()">Calculate EMI</button>
+
+      <div id="result" style="display: none;">
+        <p>Calculated EMI:</p>
+        <p id="emi-output"></p>
+      </div>
+    </section>
+    <br>
+    <!-- Blog Post Content -->
+    <section class="blog-post">
+      <h2>What is a Loan EMI Calculator?</h2>
+      <p>
+        A Loan EMI Calculator is a simple and effective tool that helps you determine the 
+        monthly repayment amount for your loan. By entering the loan amount, interest rate, 
+        and tenure, this calculator computes your Equated Monthly Installment (EMI) with ease.
+      </p>
+      <br>
+      <h3>Why Use a Loan EMI Calculator?</h3>
+      <ul style="padding-left: 25px; list-style-position: outside;">
+        <li>Save Time: Get instant results without manual calculations.</li>
+        <li>Plan Better: Know your monthly financial obligations in advance.</li>
+        <li>Accuracy: Ensure precise calculations, reducing the chances of errors.</li>
+      </ul>
+      <br>
+      <p>
+        Whether you're planning to take a personal loan, home loan, or car loan, this tool 
+        provides an accurate estimate of your monthly payments, helping you make informed decisions.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calculateEMI() {
+      const loanAmount = parseFloat(document.getElementById("loan-amount").value);
+      const annualInterestRate = parseFloat(document.getElementById("interest-rate").value);
+      const tenureYears = parseFloat(document.getElementById("loan-tenure").value);
+
+      if (isNaN(loanAmount) || isNaN(annualInterestRate) || isNaN(tenureYears)) {
+        document.getElementById("emi-output").innerHTML = "Please fill in all fields with valid numbers.";
+        document.getElementById("result").style.display = "block";
+        return;
+      }
+
+      const monthlyInterestRate = annualInterestRate / 12 / 100;
+      const numberOfPayments = tenureYears * 12;
+      const emi = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) /
+                  (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+
+      document.getElementById("emi-output").innerHTML = `₹${emi.toFixed(2)} per month`;
+      document.getElementById("result").style.display = "block"; // Show result
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

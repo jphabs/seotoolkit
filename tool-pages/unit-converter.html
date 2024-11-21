@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/unit-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Unit Converter</h1>
+    <p>Convert between various units like length, weight, and temperature in just a few clicks.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Choose the type of conversion you want to perform:</p>
+
+      <div class="input-group">
+        <label for="unit-type">Conversion Type:</label>
+        <select id="unit-type">
+          <option value="length" style="padding: 10px;">Length (meters to feet)</option>
+          <option value="weight">Weight (kilograms to pounds)</option>
+          <option value="temperature">Temperature (Celsius to Fahrenheit)</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="input-value">Enter Value:</label>
+        <input type="number" id="input-value" placeholder="Enter value to convert">
+      </div>
+
+      <button onclick="convertUnits()">Convert</button>
+
+      <div id="result" style="display: none;">
+        <p>Converted Value:</p>
+        <p id="converted-output"></p>
+      </div>
+    </section>
+
+    <!-- Blog Post Section -->
+    <section class="blog-post">
+      <h2>What is a Unit Converter?</h2>
+      <p>
+        A **Unit Converter** is a simple yet powerful tool that helps you convert measurements between different units. 
+        Whether you need to switch between metric and imperial systems or calculate temperature conversions, this tool 
+        ensures accuracy and saves time.
+      </p>
+      <p>
+        For example, if you're measuring the length of an object in meters and need the equivalent in feet, 
+        the unit converter provides instant results. Similarly, weight conversions (kilograms to pounds) 
+        and temperature conversions (Celsius to Fahrenheit) are just a click away. 
+      </p>
+      <p>
+        This tool is designed to be intuitive and user-friendly, making it perfect for students, professionals, 
+        and anyone working with different measurement systems. Say goodbye to manual calculations and errors, 
+        and embrace a smarter way to convert units.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function convertUnits() {
+      const unitType = document.getElementById("unit-type").value;
+      const inputValue = parseFloat(document.getElementById("input-value").value);
+      let convertedValue = "";
+
+      if (isNaN(inputValue)) {
+        document.getElementById("converted-output").innerHTML = "Please enter a valid number.";
+        document.getElementById("result").style.display = "block";
+        return;
+      }
+
+      switch (unitType) {
+        case "length":
+          convertedValue = (inputValue * 3.28084).toFixed(2) + " feet";
+          break;
+        case "weight":
+          convertedValue = (inputValue * 2.20462).toFixed(2) + " pounds";
+          break;
+        case "temperature":
+          convertedValue = ((inputValue * 9/5) + 32).toFixed(2) + " °F";
+          break;
+        default:
+          convertedValue = "Invalid conversion type.";
+      }
+
+      document.getElementById("converted-output").innerHTML = `<strong>${convertedValue}</strong>`;
+      document.getElementById("result").style.display = "block"; // Show result when conversion is done
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

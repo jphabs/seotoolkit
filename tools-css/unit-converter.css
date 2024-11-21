@@ -1,4 +1,4 @@
-/* General Reset and Base Styles */
+/* Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #f3f4f6;
   color: #333;
   line-height: 1.6;
@@ -16,20 +16,38 @@ body {
 }
 
 .container {
-  flex: 1;
   width: 90%;
   max-width: 1200px;
   margin: auto;
   padding: 20px;
+  flex: 1;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #4a90e2;
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+}
+
+.hero p {
+  font-size: 1.1em;
+  opacity: 0.9;
 }
 
 /* Navigation */
 nav ul {
   list-style: none;
-  padding: 0;
-  margin: 20px 0;
   display: flex;
   justify-content: center;
+  margin: 20px 0;
 }
 
 nav ul li {
@@ -40,29 +58,14 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
-/* Hero Section */
-.hero {
-  background-color: #4a90e2;
-  color: #fff;
-  text-align: center;
-  padding: 50px 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+nav ul li a:hover {
+  color: #ff8c00;
 }
 
-.hero h1 {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.1em;
-  opacity: 0.9;
-}
-
-/* Tool Description Section */
+/* Main Content */
 .tool-description {
   background-color: #fff;
   padding: 20px;
@@ -72,87 +75,91 @@ nav ul li a {
 }
 
 .tool-description p {
-  font-size: 1em;
+  font-size: 1.1em;
   margin-bottom: 10px;
 }
 
-/* Labels and Inputs */
+/* Form Inputs */
 label {
   font-size: 1em;
-  margin-right: 10px;
-  margin-top: 15px;
   display: inline-block;
+  margin-top: 15px;
 }
 
-input[type="number"],
+input[type="number"], 
 input[type="checkbox"] {
-  margin: 5px 0 15px;
   padding: 10px;
+  margin: 5px 0 15px;
   width: 100%;
 }
 
-/* Button Styles */
+select {
+  padding: 10px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #fff;
+}
+
+option {
+  font-size: 1.1em;
+  padding: 10px;
+}
+
 button {
   width: 100%;
-  display: inline-block;
   background-color: #4a90e2;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px;
   border: none;
   border-radius: 4px;
-  font-size: 1em;
-  margin-top: 10px;
+  font-size: 1.1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: #357ab8;
 }
 
-/* Result Display */
+/* Result Section */
 #result {
   margin-top: 15px;
   color: #4a90e2;
 }
 
 #result p {
-  margin-bottom: 5px;
   font-weight: bold;
 }
 
 #password-output {
   word-wrap: break-word;
-  overflow-wrap: break-word;
   max-width: 100%;
   color: #333;
 }
 
 /* Footer */
 footer {
-  text-align: center;
-  padding: 15px 20px;
   background-color: #333;
   color: #fff;
-  margin-top: 40px;
+  text-align: center;
+  padding: 15px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  width: 100%;
-  bottom: 0;
+  margin-top: 40px;
 }
 
 footer p {
   font-size: 0.9em;
 }
 
-/* Mobile View */
+/* Mobile Styles */
 @media screen and (max-width: 768px) {
   .tool-description p {
-    font-size: 0.95em;
+    font-size: 1em;
   }
 
   button {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   footer p {

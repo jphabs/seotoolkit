@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/password-generator.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Age Calculator</h1>
+    <p>Calculate someone's age by entering their birthdate and comparing it to the current date.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your date of birth below to calculate your age:</p>
+
+      <div class="input-group">
+        <label for="birthdate">Enter Birthdate:</label>
+        <input type="date" id="birthdate">
+      </div>
+
+      <button onclick="calculateAge()">Calculate Age</button>
+
+      <div id="result" style="display: none;">
+        <p>Your Age:</p>
+        <p id="age-output"></p>
+      </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+      <h2>What is an Age Calculator?</h2>
+      <p>
+        An age calculator is a simple and efficient tool that helps you determine your exact age in years, months, and days 
+        based on your birthdate. It can be used to find out how old you are, how many days are left until your next birthday, 
+        or even to track milestones in your life.
+      </p>
+      <h2>Why Use an Age Calculator?</h2>
+      <p>
+        Calculating age manually can be cumbersome, especially when factoring in leap years and varying month lengths. 
+        With an age calculator, you can instantly and accurately compute your age without any hassle. 
+        This tool is particularly useful for:
+      </p>
+      <ul style="padding-left: 20px; list-style-position: outside;">
+  <li>Determining age for official purposes, such as job applications or legal documentation.</li>
+  <li>Tracking anniversaries or personal milestones.</li>
+  <li>Planning events or projects based on someone's age.</li>
+</ul>
+      <h2>How Does This Tool Work?</h2>
+      <p>
+        Simply enter your date of birth in the input field above, and the tool calculates your age by comparing your birthdate 
+        to the current date. The result will be displayed in a fraction of a second, making this tool incredibly convenient and user-friendly.
+      </p>
+      <h2>Start Using the Age Calculator Today!</h2>
+      <p>
+        Whether you're curious about your exact age or need to find out someone's age quickly, this tool is here to help. 
+        Try it now and experience the ease and accuracy of instant age calculation.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    function calculateAge() {
+      const birthdate = new Date(document.getElementById("birthdate").value);
+      const today = new Date();
+      let ageYears = today.getFullYear() - birthdate.getFullYear();
+      const ageMonths = today.getMonth() - birthdate.getMonth();
+      const ageDays = today.getDate() - birthdate.getDate();
+
+      // Adjust for negative months or days
+      if (ageMonths < 0 || (ageMonths === 0 && ageDays < 0)) {
+        ageYears--;
+      }
+
+      if (birthdate > today || !birthdate.getTime()) {
+        document.getElementById("age-output").textContent = "Invalid date. Please enter a valid birthdate.";
+      } else {
+        document.getElementById("age-output").textContent = `${ageYears} years old`;
+      }
+
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

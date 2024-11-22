@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel to REM Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/pixel-to-rem-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Pixel to REM Converter</h1>
+    <p>Convert pixel values to REM units for CSS styling based on a root font size.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Convert your pixel values to REM by entering the pixel size and the base font size (usually 16px).</p>
+
+      <div class="input-group">
+        <label for="pixel-value">Pixel Value:</label>
+        <input type="number" id="pixel-value" value="16" min="1">
+      </div>
+
+      <div class="input-group">
+        <label for="base-font-size">Base Font Size (px):</label>
+        <input type="number" id="base-font-size" value="16" min="1">
+      </div>
+
+      <button onclick="convertToREM()">Convert to REM</button>
+
+      <div id="result" style="display: none;">
+        <p>Converted REM Value:</p>
+        <p id="rem-output"></p>
+      </div>
+    </section>
+    
+    <section class="tool-descriptions">
+  <h2>What is the Pixel to REM Converter?</h2>
+  <p>The Pixel to REM Converter is an essential tool for web developers and designers. It allows you to quickly and easily convert pixel (px) values into REM (Root EM) units, which are more flexible and scalable for responsive web design. By converting pixel values to REM units, you ensure that your website is more accessible and adaptable to different screen sizes and resolutions, providing a better user experience across all devices.</p>
+
+  <h3>Why Use REM Units for CSS Styling?</h3>
+  <p>REM units are relative to the root font size, making them more scalable than fixed pixel values. This is especially useful for responsive web design, as REM units automatically adjust based on the user’s preferred font size and the base font size set in the root element of the page. By using REM units, you can create a more consistent and accessible design that works well on different devices and screen sizes, improving both user experience and SEO.</p>
+
+  <h3>Benefits of Using a Pixel to REM Converter</h3>
+  <ul>
+    <li>Improved accessibility: REM units adjust dynamically based on the user's settings, improving readability for users with different accessibility needs.</li>
+    <li>Scalable design: REM units scale better across different screen sizes, ensuring your website is responsive and mobile-friendly.</li>
+    <li>Better maintainability: By using REM units, you can maintain a consistent design system and make future changes to the layout more easily.</li>
+    <li>Enhanced user experience: The scalability of REM units allows your website to look great on any device, from desktops to smartphones.</li>
+  </ul>
+
+  <h3>How Does the Pixel to REM Converter Work?</h3>
+  <p>Our Pixel to REM Converter works by taking pixel values and dividing them by the root font size (usually 16px) to convert them into REM units. This simple conversion ensures that your CSS values are more adaptable to various screen sizes, making your designs more flexible and responsive. All you need to do is enter your pixel value and hit the convert button, and the tool will automatically calculate the corresponding REM value.</p>
+
+  <h3>Best Practices for Using REM Units in CSS</h3>
+  <p>To get the most out of REM units, it's recommended to set a base font size in your CSS (typically 16px) and use REM units for typography, margins, paddings, and other layout properties. This will ensure that your design remains flexible and adjusts according to the user’s settings, creating a more consistent and accessible experience across all devices.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function convertToREM() {
+      const pixelValue = document.getElementById("pixel-value").value;
+      const baseFontSize = document.getElementById("base-font-size").value;
+
+      if (baseFontSize <= 0) {
+        document.getElementById("rem-output").innerHTML = "Base font size must be greater than 0.";
+        document.getElementById("result").style.display = "block";
+        return;
+      }
+
+      const remValue = (pixelValue / baseFontSize).toFixed(4); // Convert to REM and round to 4 decimal places
+      document.getElementById("rem-output").innerHTML = `<strong>${remValue} REM</strong>`;
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

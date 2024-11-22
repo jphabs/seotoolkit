@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Generator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/random-number-generator.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Random Number Generator</h1>
+    <p>Generate a random number within a specified range.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter the range below to generate a random number:</p>
+
+      <div class="input-group">
+        <label for="min-range">Min Range:</label>
+        <input type="number" id="min-range" value="1" min="1">
+      </div>
+
+      <div class="input-group">
+        <label for="max-range">Max Range:</label>
+        <input type="number" id="max-range" value="100" min="1">
+      </div>
+
+      <button onclick="generateRandomNumber()">Generate Number</button>
+
+      <div id="result" style="display: none;">
+        <p>Generated Number:</p>
+        <p id="number-output"></p>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <h2>Overview of the Random Number Generator Tool</h2>
+  <p>The Random Number Generator tool is an online tool designed to help you generate random numbers within a specified range. It’s perfect for various applications such as generating secure codes, picking random selections, or creating random values for programming and development tasks.</p>
+
+  <h3>Why Use a Random Number Generator?</h3>
+  <p>Using a random number generator (RNG) ensures that the numbers you generate are completely unpredictable, making it ideal for tasks where fairness or randomness is essential. Whether you're creating passwords, testing algorithms, or selecting random winners for contests, our tool delivers reliable results every time.</p>
+
+  <h3>How Does the Random Number Generator Work?</h3>
+  <p>Our tool allows you to define a custom range and instantly generates a random number within that range. With easy-to-use settings, you can control the minimum and maximum numbers, making it versatile for a variety of purposes. Whether you need a small random number or one within a large range, this tool has got you covered.</p>
+
+  <h3>Features of the Random Number Generator Tool</h3>
+  <ul>
+    <li>Generate random numbers within any given range</li>
+    <li>Easy-to-use interface with adjustable minimum and maximum limits</li>
+    <li>Perfect for secure applications such as password generation or random selection</li>
+    <li>Free and available online for anyone to use</li>
+  </ul>
+
+  <h3>Applications of Random Number Generation</h3>
+  <p>Random number generation has a wide array of applications. Some common uses include:</p>
+  <ul>
+    <li>Creating secure passwords and authentication keys</li>
+    <li>Choosing random lottery numbers or contest winners</li>
+    <li>Random sampling for data analysis</li>
+    <li>Simulating randomness in games and applications</li>
+  </ul>
+
+  <h3>How to Use the Random Number Generator Tool</h3>
+  <p>To use the Random Number Generator tool, simply specify the range (minimum and maximum values) and click the 'Generate' button. The tool will quickly provide a random number that fits within the given limits.</p>
+</section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function generateRandomNumber() {
+      const minRange = parseInt(document.getElementById("min-range").value);
+      const maxRange = parseInt(document.getElementById("max-range").value);
+
+      if (isNaN(minRange) || isNaN(maxRange) || minRange >= maxRange) {
+        document.getElementById("number-output").innerHTML = "Please provide valid range values.";
+        document.getElementById("result").style.display = "block";
+        return;
+      }
+
+      const randomNumber = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+
+      document.getElementById("number-output").innerHTML = `<strong>${randomNumber}</strong>`;
+      document.getElementById("result").style.display = "block"; // Show result when number is generated
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

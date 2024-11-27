@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/percentage-calculator.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Percentage Calculator</h1>
+    <p>Calculate percentages, percentage increases, and decreases.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter the values to calculate:</p>
+
+      <div class="input-group">
+        <label for="value">Enter Value (X):</label>
+        <input type="number" id="value" placeholder="Enter X">
+      </div>
+
+      <div class="input-group">
+        <label for="percentage">Enter Percentage (Y%):</label>
+        <input type="number" id="percentage" placeholder="Enter Y%">
+      </div>
+
+      <button onclick="calculatePercentage()">Calculate</button>
+
+      <div id="result" style="display: none;">
+        <p>Result:</p>
+        <p id="result-output"></p>
+      </div>
+    </section>
+    
+    <section class="percentage-calculator-description">
+  <h2>Mastering Percentage Calculations: The Ultimate Guide</h2>
+  <p>Calculating percentages is an essential skill in everyday life, whether you're budgeting your finances, shopping, or managing business operations. The **Percentage Calculator** offers a fast, accurate, and reliable way to calculate percentages, percentage increases, and decreases with minimal effort. Understanding how percentages work is crucial in numerous contexts, and this tool simplifies the entire process, ensuring you can make informed decisions without the need for manual calculations.</p>
+
+  <p>Percentage calculations are used in various scenarios, including determining discounts, calculating taxes, comparing price changes, and understanding profit margins. Whether you're a student learning about percentages, a business owner tracking sales, or someone interested in personal finance, the ability to quickly and accurately calculate percentages is a vital skill. The **Percentage Calculator** tool helps bridge the gap between complex mathematical operations and everyday usability, offering a user-friendly interface and instant results.</p>
+
+  <p>One of the most common uses of percentage calculations is when you need to determine a certain percentage of a given value. This could be in a retail context where you want to calculate a discount, in a financial scenario to compute interest rates, or even when assessing sales performance over time. By entering a value and a percentage, the **Percentage Calculator** instantly provides the result, making it easy to make quick decisions.</p>
+
+  <p>Another key function of percentage calculations is determining what percentage one number is of another. This is commonly used in scenarios like analyzing growth rates, comparing the results of two different data sets, or figuring out how much a number has increased or decreased in proportion. The tool’s flexibility allows users to explore these types of calculations with ease, making it an essential tool for both professional and personal use.</p>
+
+  <p>Moreover, the ability to calculate percentage increases and decreases is vital for businesses, especially when tracking changes in prices, sales, or inventory levels. Understanding the impact of changes in percentage terms can help you make smarter, data-driven decisions. Whether you're dealing with a price hike, a decrease in sales, or calculating employee bonuses based on percentage increments, the **Percentage Calculator** simplifies these tasks, ensuring that you can handle complex business scenarios with ease.</p>
+
+  <p>In addition to its core functionality, the **Percentage Calculator** is designed to be intuitive and easy to use. Its simple and straightforward interface ensures that even those with minimal mathematical background can use it without difficulty. No need for complex formulas or manual calculations—just input the numbers, and the calculator does the rest. This makes it a go-to tool for anyone looking to solve percentage-related problems efficiently.</p>
+
+  <p>Whether you're managing personal expenses, doing homework, or running a business, the **Percentage Calculator** is an invaluable tool that helps you navigate the complexities of percentages with speed and accuracy. By providing quick results for common percentage calculations like finding a percentage of a number, calculating what percentage one number is of another, and determining percentage increases or decreases, this tool makes understanding percentages more accessible than ever before.</p>
+
+  <p>Overall, the **Percentage Calculator** is a versatile and essential tool for anyone needing quick, reliable, and accurate percentage calculations. Whether you need to calculate a discount, determine tax rates, or analyze financial data, this tool is designed to help you get the numbers you need quickly and efficiently, all while improving your understanding of how percentages work in various real-world scenarios.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calculatePercentage() {
+      const value = document.getElementById("value").value;
+      const percentage = document.getElementById("percentage").value;
+
+      if (value && percentage) {
+        const result = (value * percentage) / 100;
+        document.getElementById("result-output").innerHTML = `The result is: <strong>${result}</strong>`;
+        document.getElementById("result").style.display = "block";
+      } else {
+        document.getElementById("result-output").innerHTML = "Please enter valid numbers for both fields.";
+        document.getElementById("result").style.display = "block";
+      }
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Frequency Counter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/word-frequency-counter.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Word Frequency Counter</h1>
+    <p>Analyze a block of text and see the frequency of each word in descending order.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text below to analyze the frequency of each word:</p>
+
+      <div class="input-group">
+        <label for="text-input">Enter Text:</label>
+        <textarea id="text-input" rows="6" placeholder="Paste or type your text here..."></textarea>
+      </div>
+
+      <button onclick="countWordFrequency()">Analyze Text</button>
+
+      <div id="result" style="display: none;">
+        <p>Word Frequency:</p>
+        <ul id="frequency-list"></ul>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <p>The Word Frequency Counter is a powerful and easy-to-use tool designed to help you analyze text and identify the frequency of each word within it. Whether you’re a writer, blogger, student, or content creator, this tool is an essential resource for anyone looking to gain insights into their text data. With just a few simple steps, you can instantly view how often each word appears in your provided text.</p>
+
+  <p>By simply pasting or typing your content into the input field, the Word Frequency Counter scans your text and generates a detailed report of word occurrences, ranked in descending order. This feature is particularly useful for SEO professionals who need to optimize content for search engines by ensuring that their most important keywords are used appropriately.</p>
+
+  <p>Not only does this tool help with content analysis, but it can also improve your writing style. By understanding which words dominate your content, you can make better decisions about word usage, repetition, and keyword distribution. This allows for a more polished and professional final product, whether it’s an article, essay, blog post, or any other form of written content.</p>
+
+  <p>In addition to offering a simple and effective way to check word frequency, our Word Frequency Counter also works in real-time. As you update or change the text, the word count results are updated instantly, making the process fast and efficient. This is perfect for those working on multiple drafts or who need to monitor their word usage while writing.</p>
+
+  <p>Try the Word Frequency Counter today to unlock a deeper understanding of your text and enhance the quality of your content. Whether for academic purposes, professional writing, or SEO optimization, this tool is a must-have for anyone serious about effective communication and content analysis.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function countWordFrequency() {
+      const text = document.getElementById("text-input").value.trim();
+      if (text === "") {
+        alert("Please enter some text to analyze.");
+        return;
+      }
+
+      const words = text.split(/\s+/);
+      const wordCount = {};
+
+      // Count frequency of each word
+      words.forEach(word => {
+        word = word.toLowerCase().replace(/[^a-zA-Z0-9]/g, ''); // Normalize and remove non-alphanumeric characters
+        if (word) {
+          wordCount[word] = (wordCount[word] || 0) + 1;
+        }
+      });
+
+      // Sort words by frequency in descending order
+      const sortedWords = Object.entries(wordCount).sort((a, b) => b[1] - a[1]);
+
+      // Display results
+      const frequencyList = document.getElementById("frequency-list");
+      frequencyList.innerHTML = "";
+      sortedWords.forEach(([word, count]) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${word}: ${count}`;
+        frequencyList.appendChild(listItem);
+      });
+
+      document.getElementById("result").style.display = "block"; // Show result when analysis is done
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

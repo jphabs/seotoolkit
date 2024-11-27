@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Zone Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/time-zone-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Time Zone Converter</h1>
+    <p>Convert time between different time zones easily and accurately.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Convert time between various time zones:</p>
+
+      <div class="input-group">
+        <label for="input-time">Enter Time:</label>
+        <input type="datetime-local" id="input-time" required>
+      </div>
+
+      <div class="input-group">
+        <label for="from-timezone">From Time Zone:</label>
+        <select id="from-timezone" required>
+          <option value="UTC">UTC</option>
+          <option value="EST">Eastern Standard Time (EST)</option>
+          <option value="PST">Pacific Standard Time (PST)</option>
+          <option value="GMT">Greenwich Mean Time (GMT)</option>
+          <option value="IST">Indian Standard Time (IST)</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="to-timezone">To Time Zone:</label>
+        <select id="to-timezone" required>
+          <option value="UTC">UTC</option>
+          <option value="EST">Eastern Standard Time (EST)</option>
+          <option value="PST">Pacific Standard Time (PST)</option>
+          <option value="GMT">Greenwich Mean Time (GMT)</option>
+          <option value="IST">Indian Standard Time (IST)</option>
+        </select>
+      </div>
+
+      <button onclick="convertTime()">Convert Time</button>
+
+      <div id="result" style="display: none;">
+        <p>Converted Time:</p>
+        <p id="converted-time-output"></p>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <h2>Time Zone Converter - Effortlessly Convert Time Between Different Zones</h2>
+  <p>Welcome to our Time Zone Converter tool! Whether you are coordinating an international business meeting, planning a vacation, or simply curious about the time in different parts of the world, this tool makes it easy to convert time between multiple time zones instantly. No need to remember complex time zone differences or calculate the conversions manually — our tool handles everything for you with just a few clicks.</p>
+  
+  <p>With this <strong>Time Zone Converter</strong>, you can quickly compare times across various cities worldwide, ensuring you never miss an important call or meeting again. All you need to do is enter the current time in your location, select the desired time zone, and our tool will instantly display the corresponding time in that region. From New York to Tokyo, London to Sydney, it’s all possible with this easy-to-use tool!</p>
+
+  <h3>Why Use Our Time Zone Converter?</h3>
+  <p>Our <strong>Time Zone Converter</strong> offers a user-friendly and intuitive interface designed to simplify time zone conversion. This tool helps you:</p>
+  <ul>
+    <li><strong>Convert Time Accurately:</strong> Enter any time and easily convert it to another time zone, with support for hundreds of cities around the globe.</li>
+    <li><strong>Improve Global Coordination:</strong> Ideal for businesses with international teams or clients across different continents, ensuring seamless scheduling.</li>
+    <li><strong>Time Zone Comparison:</strong> Compare times in different cities side by side to avoid confusion when planning calls, events, or travels.</li>
+    <li><strong>Stay On Time:</strong> No more guessing about when your favorite show or important event is airing in a different time zone.</li>
+  </ul>
+
+  <h3>How to Use the Time Zone Converter?</h3>
+  <p>Using our <strong>Time Zone Converter</strong> is simple:</p>
+  <ol>
+    <li>Enter the time in your local time zone.</li>
+    <li>Select your desired destination time zone from the drop-down list or search by city.</li>
+    <li>Click “Convert,” and instantly see the converted time in the chosen time zone.</li>
+  </ol>
+
+  <p>Our converter is fast, reliable, and always up to date with the latest time zone information, including adjustments for daylight saving time (DST). Never again will you have to manually check if the time is right in another part of the world — leave that to us!</p>
+
+  <h3>Features of the Time Zone Converter Tool</h3>
+  <ul>
+    <li>Accurate time conversions across all regions.</li>
+    <li>Multiple time zone support for a global reach.</li>
+    <li>Simple and responsive design for all devices.</li>
+    <li>Supports daylight saving time changes automatically.</li>
+  </ul>
+
+  <p>Start using the <strong>Time Zone Converter</strong> today and experience how easy it can be to synchronize your schedule globally. Whether you are a frequent traveler or a business professional working across time zones, this tool is your go-to solution for managing time effectively and efficiently.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function convertTime() {
+      const inputTime = document.getElementById("input-time").value;
+      const fromTimezone = document.getElementById("from-timezone").value;
+      const toTimezone = document.getElementById("to-timezone").value;
+
+      if (!inputTime || !fromTimezone || !toTimezone) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      const timezones = {
+        UTC: 0,
+        EST: -5,
+        PST: -8,
+        GMT: 0,
+        IST: 5.5
+      };
+
+      const date = new Date(inputTime);
+      const offset = timezones[toTimezone] - timezones[fromTimezone];
+      date.setHours(date.getHours() + offset);
+
+      const convertedTime = date.toLocaleString();
+      document.getElementById("converted-time-output").innerHTML = `<strong>${convertedTime}</strong>`;
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

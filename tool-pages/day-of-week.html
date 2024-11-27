@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day of the Week Calculator</title>
+  <link rel="stylesheet" href="../tools-css/day-of-week.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Day of the Week Calculator</h1>
+    <p>Enter a date and determine which day of the week it falls on.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your date below:</p>
+
+      <div class="input-group">
+        <label for="date-input">Date:</label>
+        <input type="date" id="date-input">
+      </div>
+
+      <button onclick="calculateDay()">Calculate Day</button>
+
+      <div id="result" style="display: none;">
+        <p>The day of the week is:</p>
+        <p id="day-output"></p>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <p>Ever wondered what day of the week you were born on? Or need to find the weekday for an important date? This tool calculates the day of the week for any date you provide. Enter a date below and let us do the magic!</p>
+  <p>Simply input your desired date in the fields below, and you'll instantly know the corresponding day of the week.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calculateDay() {
+      const dateInput = document.getElementById("date-input").value;
+
+      if (!dateInput) {
+        document.getElementById("day-output").innerHTML = "Please select a date.";
+        document.getElementById("result").style.display = "block";
+        return;
+      }
+
+      const date = new Date(dateInput);
+      const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const day = daysOfWeek[date.getDay()];
+
+      document.getElementById("day-output").innerHTML = `<strong>${day}</strong>`;
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

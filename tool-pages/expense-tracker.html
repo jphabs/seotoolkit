@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/expense-tracker.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Expense Tracker</h1>
+    <p>A simple tool to manage your expenses effectively.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Track your expenses with ease:</p>
+      <div class="expense-tracker">
+        <div class="input-group">
+          <label for="expense-name">Expense Name:</label>
+          <input type="text" id="expense-name" placeholder="e.g., Groceries">
+        </div>
+        <div class="input-group">
+          <label for="expense-amount">Amount:</label>
+          <input type="number" id="expense-amount" placeholder="e.g., 1500">
+        </div>
+        <button onclick="addExpense()">Add Expense</button>
+
+        <h2>Expense List</h2>
+        <ul id="expense-list"></ul>
+
+        <h3>Total: <span id="total-amount">0</span></h3>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <h2>About the Expense Tracker</h2>
+  <p>
+    Managing your finances has never been easier! Our **Expense Tracker** is a simple, user-friendly tool designed to help you track your spending habits and stay on top of your budget. Whether you're saving for a big purchase, planning your monthly expenses, or simply aiming to be more mindful of your spending, this tool has got you covered.
+  </p>
+  <p>
+    With the Expense Tracker, you can easily add, edit, and delete expense entries. Each entry lets you record the amount spent, the purpose of the expense, and any additional notes you may need. The tool calculates a running total in real-time, giving you a clear snapshot of your financial activities. 
+  </p>
+  <p>
+    Perfect for individuals, families, or small businesses, this tracker is straightforward yet powerful. It helps you identify spending patterns, make informed decisions, and achieve your financial goals with confidence. Stay organized, reduce financial stress, and take control of your money like a pro.
+  </p>
+  <p>
+    Ready to master your budget? Start using the Expense Tracker today and experience the simplicity of smart money management!
+  </p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    let totalAmount = 0;
+
+    function addExpense() {
+      const expenseName = document.getElementById("expense-name").value.trim();
+      const expenseAmount = parseFloat(document.getElementById("expense-amount").value);
+
+      if (!expenseName || isNaN(expenseAmount) || expenseAmount <= 0) {
+        alert("Please enter valid details.");
+        return;
+      }
+
+      const expenseList = document.getElementById("expense-list");
+      const li = document.createElement("li");
+      li.textContent = `${expenseName} - PHP ${expenseAmount}`;
+      expenseList.appendChild(li);
+
+      totalAmount += expenseAmount;
+      document.getElementById("total-amount").textContent = totalAmount.toFixed(2);
+
+      document.getElementById("expense-name").value = "";
+      document.getElementById("expense-amount").value = "";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

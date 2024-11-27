@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leap Year Checker | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/leap-year-checker.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Leap Year Checker</h1>
+    <p>Check if a given year is a leap year or not.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter a year below to determine if it's a leap year:</p>
+
+      <div class="input-group">
+        <label for="year">Year:</label>
+        <input type="number" id="year" placeholder="e.g., 2024" min="1">
+      </div>
+
+      <button onclick="checkLeapYear()">Check Leap Year</button>
+
+      <div id="result" style="display: none;">
+        <p id="leap-year-output"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    function checkLeapYear() {
+      const year = parseInt(document.getElementById("year").value);
+      const output = document.getElementById("leap-year-output");
+      const result = document.getElementById("result");
+
+      if (isNaN(year) || year < 1) {
+        output.innerHTML = "Please enter a valid year.";
+        result.style.display = "block";
+        return;
+      }
+
+      const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+      output.innerHTML = isLeap 
+        ? `<strong>${year}</strong> is a Leap Year!` 
+        : `<strong>${year}</strong> is not a Leap Year.`;
+      result.style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

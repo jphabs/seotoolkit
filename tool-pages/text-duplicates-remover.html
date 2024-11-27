@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Duplicates Remover | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/text-duplicates-remover.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Text Duplicates Remover</h1>
+    <p>Paste a block of text, and the tool removes duplicate lines or words.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Paste your text below:</p>
+      <textarea id="text-input" rows="10" placeholder="Enter your text here..."></textarea>
+      <button onclick="removeDuplicates()">Remove Duplicates</button>
+
+      <div id="result" style="display: none;">
+        <p>Processed Text:</p>
+        <textarea id="text-output" rows="10" readonly></textarea>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <p>
+    The Text Duplicates Remover is a simple yet powerful online tool designed to help you eliminate duplicate lines or words from your text effortlessly. Whether you're a writer, developer, or data analyst, this tool is your go-to solution for cleaning up text files, removing redundant content, and optimizing your documents.
+  </p>
+  <p>
+    With its easy-to-use interface, you can paste any block of text into the tool, and it will automatically detect and remove duplicate entries. This saves you time and ensures your content remains unique and organized. The tool is perfect for processing data logs, cleaning up lists, or even managing repetitive content in articles and emails.
+  </p>
+  <p>
+    By using the Text Duplicates Remover, you can enhance the quality of your work by focusing on what's important, without the distraction of repeated text. It's especially useful for professionals managing large datasets, ensuring efficient text processing and better readability.
+  </p>
+  <p>
+    Optimized for all modern devices and browsers, this tool is lightweight and requires no additional software installation. It's an essential utility for anyone looking to streamline their workflow and achieve cleaner, more professional outputs. Just paste your text, click the button, and watch as the tool delivers a polished, duplicate-free version of your input.
+  </p>
+  <p>
+    Experience the convenience of a quick and reliable text processing tool today. Remove duplicates, organize your content, and save valuable time with the Text Duplicates Remover.
+  </p>
+</section>
+    
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    function removeDuplicates() {
+      const input = document.getElementById("text-input").value;
+      const lines = input.split(/\r?\n/);
+      const uniqueLines = [...new Set(lines)];
+      document.getElementById("text-output").value = uniqueLines.join("\n");
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

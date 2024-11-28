@@ -6,7 +6,7 @@
 }
 
 .logo {
-  width: 320px;
+  width: 720px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -52,6 +52,7 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 3rem;
 }
 
 /* Hero Section */
@@ -147,4 +148,26 @@ footer p {
     text-align: center; /* Centers the content */
     margin: auto; /* Ensures horizontal centering */
   }
+  
+  /* Mobile View */
+@media screen and (max-width: 768px) {
+  .tool-description p {
+    font-size: 0.95em;
+  }
+
+  button {
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.8em;
+  }
+  
+      .logo {
+  width: 320px;
+}
+
+nav ul li a {
+  font-size: 1.6rem;
+}
 }

@@ -6,7 +6,7 @@
 }
 
 .logo {
-  width: 320px;
+  width: 720px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -46,6 +46,7 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 3rem;
 }
 
 /* Hero Section */
@@ -178,4 +179,12 @@ footer p {
   footer p {
     font-size: 0.8em;
   }
+  
+    .logo {
+  width: 320px;
+}
+
+nav ul li a {
+  font-size: 1.6rem;
+}
 }

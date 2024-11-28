@@ -6,7 +6,7 @@
 }
 
 .logo {
-  width: 320px;
+  width: 720px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -46,6 +46,7 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 2.8em;
 }
 
 /* Hero Section */
@@ -195,19 +196,12 @@ footer p {
 }
 
 .step-item {
-  font-size: 1em;
+  font-size: 1.5em;
   margin-bottom: 8px;
   color: #333;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-}
-
-.steps-list .step-item:before {
-  content: "•";
-  color: #4a90e2;
-  margin-right: 10px;
-  font-size: 1.2em;
 }
 
 .steps-list .step-item {
@@ -239,4 +233,26 @@ footer p {
   .section-description, .subsection-description {
     font-size: 1em;
   }
+  
+  .step-item {
+  font-size: 1em;
+  margin-bottom: 8px;
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.logo {
+  width: 320px;
+  height: auto;
+  margin-bottom: 20px;
+}
 }

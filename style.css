@@ -5,7 +5,7 @@
 }
 
 .logo {
-  width: 320px; 
+  width: 720px; 
   height: auto;
   margin-bottom: 20px;
 }
@@ -59,6 +59,7 @@ nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 3rem;
 }
 
 .search-container {
@@ -153,4 +154,12 @@ footer p {
   footer p {
     font-size: 0.8em; /* Adjust font size for mobile footer */
   }
+  
+        .logo {
+  width: 320px;
+}
+
+nav ul li a {
+  font-size: 1.6rem;
+}
 }

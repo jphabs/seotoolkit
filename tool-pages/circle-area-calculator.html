@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Area Calculator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/circle-area-calculator.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Circle Area Calculator</h1>
+    <p>Calculate the area, circumference, and diameter of a circle based on the radius.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter the radius to calculate the circle's area, circumference, and diameter:</p>
+
+      <div class="input-group">
+        <label for="radius">Radius (in units):</label>
+        <input type="number" id="radius" value="5" min="0" step="any">
+      </div>
+
+      <button onclick="calculateCircleProperties()">Calculate</button>
+
+      <div id="result" style="display: none;">
+        <p>Results:</p>
+        <p><strong>Area:</strong> <span id="area"></span> square units</p>
+        <p><strong>Circumference:</strong> <span id="circumference"></span> units</p>
+        <p><strong>Diameter:</strong> <span id="diameter"></span> units</p>
+      </div>
+    </section>
+    
+<section class="long-description">
+  <h2 class="section-heading">Circle Area Calculator</h2>
+  <p class="description-text">Welcome to our Circle Area Calculator! This tool is designed to help you quickly and accurately calculate the area, circumference, and diameter of a circle based on the radius you provide.<br> </br>Whether you’re a student learning geometry, an engineer, or just someone who needs to make quick calculations, this tool simplifies the process.</p>
+
+  <p class="description-text">The area of a circle is an important mathematical measurement, and it is calculated using the formula:</p>
+  <pre><code>Area = π * r²</code></pre>
+  <p class="description-text">Where <strong>π</strong> (pi) is approximately 3.14159, and <strong>r</strong> is the radius of the circle.<br> </br>This formula gives you the total space inside the circle.<br> </br>The larger the radius, the greater the area.</p>
+
+  <p class="description-text">Another crucial aspect of a circle is its circumference, which represents the distance around the edge.<br> </br>The circumference can be calculated using the formula:</p>
+  <pre><code>Circumference = 2 * π * r</code></pre>
+  <p class="description-text">By inputting the radius into the calculator, you can also find the circumference, which is particularly useful in a wide range of applications from construction projects to design work.</p>
+
+  <p class="description-text">Lastly, the diameter is the straight-line distance across the circle, passing through its center.<br> </br>You can easily find the diameter by simply doubling the radius:</p>
+  <pre><code>Diameter = 2 * r</code></pre>
+  <p class="description-text">This measurement is essential when you need to understand the full width of the circle.<br> </br>Whether you're working on a circular table, a pipe, or any other circular object, the diameter is an important value to consider.</p>
+
+  <p class="description-text">Our tool provides an intuitive and simple way to calculate these values.<br> </br>All you need to do is enter the radius, and the Circle Area Calculator will automatically compute the area, circumference, and diameter for you.<br> </br>No need for complicated formulas or time-consuming calculations—just input the radius and get the results instantly.</p>
+
+  <p class="description-text">Start using the Circle Area Calculator today and make your geometry tasks faster and easier.<br> </br>Whether you're studying for an exam, working on a project, or simply curious about the circle's dimensions, this tool is the perfect solution.</p>
+
+  <p class="description-text">Don’t forget to adjust the radius as needed, and watch how quickly the calculator updates the results.<br> </br>Try it now and simplify your circle-related calculations!</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function calculateCircleProperties() {
+      const radius = parseFloat(document.getElementById("radius").value);
+      if (isNaN(radius) || radius <= 0) {
+        alert("Please enter a valid positive number for the radius.");
+        return;
+      }
+
+      const area = Math.PI * Math.pow(radius, 2);
+      const circumference = 2 * Math.PI * radius;
+      const diameter = 2 * radius;
+
+      document.getElementById("area").innerText = area.toFixed(2);
+      document.getElementById("circumference").innerText = circumference.toFixed(2);
+      document.getElementById("diameter").innerText = diameter.toFixed(2);
+
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary to Decimal Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/binary-decimal-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Binary to Decimal Converter</h1>
+    <p>Effortlessly convert binary numbers to decimal values and vice versa.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter a binary or decimal number below to convert:</p>
+
+      <div class="input-group">
+        <label for="input-number">Enter Number:</label>
+        <input type="text" id="input-number" placeholder="Enter binary or decimal value">
+      </div>
+
+      <div class="input-group">
+        <button onclick="convertBinaryDecimal()">Convert</button>
+      </div>
+
+      <div id="result" style="display: none;">
+        <p>Conversion Result:</p>
+        <p id="conversion-output"></p>
+      </div>
+    </section>
+    
+    <section class="tool-description">
+  <h2>Binary to Decimal Converter</h2>
+  <p>The Binary to Decimal Converter is your go-to tool for effortlessly converting binary numbers to decimal values. Designed with precision and simplicity, this tool ensures accuracy in every calculation, making it an essential resource for students, programmers, and professionals in technology-related fields.</p>
+  <p>Binary numbers, composed of only 0s and 1s, form the foundation of computer operations and digital systems. Converting these binary values into decimal numbers can be challenging, especially when dealing with lengthy binary sequences. With this converter, you can achieve reliable results in seconds without manual computation.</p>
+  <p>This tool caters to a wide audience, including software developers working on binary algorithms, hardware engineers designing digital circuits, and educators teaching number systems. By simplifying conversions, it enhances learning and productivity, allowing users to focus on core tasks instead of tedious calculations.</p>
+  <p>The Binary to Decimal Converter is not only user-friendly but also highly efficient. Simply input your binary number, and the tool instantly processes the data to display its decimal equivalent. With a clean and intuitive interface, it is perfect for both beginners and advanced users.</p>
+  <p>Whether you're debugging code, analyzing data, or exploring the fundamentals of computing, our Binary to Decimal Converter is an invaluable resource. Its speed and reliability make it an essential addition to your toolkit for tackling numerical challenges in the digital world.</p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script>
+    function convertBinaryDecimal() {
+      const input = document.getElementById("input-number").value.trim();
+      const isBinary = /^[01]+$/.test(input);
+      const isDecimal = /^[0-9]+$/.test(input);
+      const outputElement = document.getElementById("conversion-output");
+
+      if (isBinary) {
+        // Convert binary to decimal
+        const decimalValue = parseInt(input, 2);
+        outputElement.textContent = `${input} (Binary) = ${decimalValue} (Decimal)`;
+      } else if (isDecimal) {
+        // Convert decimal to binary
+        const binaryValue = Number(input).toString(2);
+        outputElement.textContent = `${input} (Decimal) = ${binaryValue} (Binary)`;
+      } else {
+        outputElement.textContent = "Please enter a valid binary or decimal number.";
+      }
+
+      document.getElementById("result").style.display = "block";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

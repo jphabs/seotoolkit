@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Compression Simulator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/text-compression-simulator.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Text Compression Simulator</h1>
+    <p>Simulate basic text compression by removing extra spaces and repeated characters.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text below to simulate compression:</p>
+
+      <div class="input-group">
+        <label for="input-text">Input Text:</label>
+        <textarea id="input-text" rows="6" placeholder="Enter text here..."></textarea>
+      </div>
+
+      <button onclick="compressText()">Compress Text</button>
+
+      <div id="result" style="display: none;">
+        <p>Compressed Text:</p>
+        <p id="compressed-output"></p>
+        <p>Size Reduction: <span id="size-reduction"></span></p>
+      </div>
+    </section>
+    
+<section class="long-description">
+  <p class="description-paragraph">
+    Welcome to the <strong>Text Compression Simulator</strong>, a practical tool that helps you explore and understand the fundamental concept of text compression. <br> </br>Text compression is the process of reducing the size of text data by eliminating redundancy, which can significantly optimize storage and improve data transmission speeds.<br> </br> This tool allows you to visualize how text compression works by simulating the reduction of file sizes, making it an invaluable resource for developers, content creators, and anyone interested in optimizing their text data.
+  </p>
+
+  <p class="description-paragraph">
+    Whether you're a web developer aiming to improve website load times, a content manager seeking to optimize files for storage, or simply curious about how compression algorithms work, this simulator provides an interactive experience.<br> </br>By simulating simple compression techniques, you can see firsthand how reducing spaces, eliminating repeated characters, and improving text structure can lead to a more compact version of your input text.
+  </p>
+
+  <p class="description-paragraph">
+    The <strong>Text Compression Simulator</strong> works by analyzing the input text and performing actions that compress the text to save space.<br> </br>This process mimics the core principles of compression algorithms used in various fields such as data storage, file transfer, and software applications.<br> </br>It simplifies text by removing excess spaces between words, eliminating redundant characters, and presenting a more efficient format.
+  </p>
+
+  <p class="description-paragraph">
+    The tool shows both the original and compressed versions of your text, making it easy to compare the difference in size.<br> </br>By providing a clear view of how much space can be saved, this tool helps you understand the practical benefits of text compression and how minor text adjustments can lead to significant storage savings and faster transmission speeds.
+  </p>
+
+  <p class="description-paragraph">
+    <strong>How It Works:</strong> The compression process is carried out in three main steps:
+  </p>
+  <ul class="compression-steps">
+    <li class="step-item"><strong>Space Removal:</strong> Extra spaces between words are automatically eliminated, making the text more concise and efficient.</li>
+    <li class="step-item"><strong>Character Duplication Elimination:</strong> Repeated characters are condensed, removing redundancy and reducing overall text size.</li>
+    <li class="step-item"><strong>Size Reduction Display:</strong> The tool calculates and shows the size difference between the original and compressed text, making the efficiency of compression clear.</li>
+  </ul>
+
+  <p class="description-paragraph">
+    This tool processes text quickly and offers instant results, making it easy to experiment with different inputs and observe how compression affects text.<br> </br>The ability to copy the compressed text after processing adds practical value, enabling users to apply the optimized version wherever needed.
+  </p>
+
+  <p class="description-paragraph">
+    <strong>Why Use This Tool?</strong>
+  </p>
+  <ul class="benefits">
+    <li class="benefit-item"><strong>Improve Website Performance:</strong> Compressing text can significantly reduce the size of your website files, leading to faster load times, better user experience, and improved SEO rankings.</li>
+    <li class="benefit-item"><strong>Optimize Storage Efficiency:</strong> Compressing text data makes better use of storage space, which is especially helpful when dealing with large datasets or limited storage capacity.</li>
+    <li class="benefit-item"><strong>Reduce Bandwidth Consumption:</strong> Smaller text files consume less bandwidth, making this tool ideal for environments with low bandwidth or mobile applications.</li>
+    <li class="benefit-item"><strong>Learn About Compression Algorithms:</strong> The Text Compression Simulator provides an educational platform to understand how compression algorithms work and how they can be applied in real-world scenarios.</li>
+  </ul>
+
+  <p class="description-paragraph">
+    Start experimenting with the <strong>Text Compression Simulator</strong> today and see how even minor changes in your text formatting can lead to more efficient storage and faster data transfer.<br> </br>Whether you're a beginner or an experienced user, this tool provides valuable insights into text compression and its real-world applications.
+  </p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function compressText() {
+      let inputText = document.getElementById("input-text").value;
+
+      // Remove extra spaces and repeated characters
+      let compressedText = inputText.replace(/\s+/g, ' ').trim();
+      compressedText = compressedText.replace(/([a-zA-Z])\1+/g, '$1');
+
+      // Calculate size reduction
+      let originalSize = inputText.length;
+      let compressedSize = compressedText.length;
+      let sizeReduction = ((originalSize - compressedSize) / originalSize * 100).toFixed(2) + '%';
+
+      document.getElementById("compressed-output").innerHTML = `<strong>${compressedText}</strong>`;
+      document.getElementById("size-reduction").textContent = sizeReduction;
+      document.getElementById("result").style.display = "block"; // Show result
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

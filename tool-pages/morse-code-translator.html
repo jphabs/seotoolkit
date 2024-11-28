@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morse Code Translator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/morse-code-translator.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Morse Code Translator</h1>
+    <p>Convert text to Morse code and vice versa.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Enter your text or Morse code below and convert it:</p>
+
+      <div class="input-group">
+        <label for="text-input">Text to Morse Code:</label>
+        <textarea id="text-input" placeholder="Enter text here"></textarea>
+      </div>
+
+      <button onclick="textToMorse()">Convert to Morse</button>
+
+      <div id="morse-result" style="display: none;">
+        <p>Morse Code:</p>
+        <p id="morse-output"></p>
+      </div>
+
+      <div class="input-group">
+        <label for="morse-input">Morse Code to Text:</label>
+        <textarea id="morse-input" placeholder="Enter Morse code here"></textarea>
+      </div>
+
+      <button onclick="morseToText()">Convert to Text</button>
+
+      <div id="text-result" style="display: none;">
+        <p>Converted Text:</p>
+        <p id="text-output"></p>
+      </div>
+    </section>
+    
+    <section class="long-description">
+  <h2 class="title">About the Morse Code Translator Tool</h2>
+  <p class="intro">
+    The Morse Code Translator tool is a powerful and easy-to-use utility designed to convert text to Morse code and vice versa. Whether you need to encode a message for fun, learn Morse code, or decode an old communication, this tool has got you covered. With a simple interface and fast conversion process, it's the perfect tool for anyone looking to explore the world of Morse code.
+  </p>
+
+  <h3 class="subtitle">How the Morse Code Translator Works</h3>
+  <p class="description">
+    This tool provides two main functionalities: converting regular text into Morse code and translating Morse code back into readable text. The conversion process is done using internationally recognized Morse code standards, allowing for accurate and consistent results. Morse code is a system of dots (.) and dashes (-) used to represent letters, numbers, and punctuation, making it a vital tool for communication in various fields, including radio transmission, aviation, and even emergency signaling.
+  </p>
+
+  <h3 class="subtitle">Text to Morse Code Conversion</h3>
+  <p class="description">
+    By entering a text message into the provided input field, you can instantly convert it into its Morse code equivalent. The tool will automatically convert each character, including spaces, into the corresponding Morse code symbols. This feature is useful for learning Morse code, encoding secret messages, or even transmitting messages in situations where regular text communication is not possible.
+  </p>
+
+  <h3 class="subtitle">Morse Code to Text Conversion</h3>
+  <p class="description">
+    If you have a Morse code message that needs to be decoded, simply paste it into the Morse code input box. Our tool will swiftly translate the code back into its original text form. Whether you're working with a historical Morse code document or a modern message, this feature helps you unlock the hidden meaning behind the code with ease.
+  </p>
+
+  <h3 class="subtitle">Benefits of Using the Morse Code Translator</h3>
+  <ul class="feature-list">
+    <li><strong>Fast and Efficient:</strong> With just a few clicks, you can quickly convert text into Morse code and decode it back to text.</li>
+    <li><strong>Easy to Use:</strong> The intuitive interface ensures that even beginners can easily understand and use the tool.</li>
+    <li><strong>Accurate Conversions:</strong> The tool ensures high accuracy in converting text to Morse code and vice versa, based on the standard Morse code alphabet.</li>
+    <li><strong>Educational Purpose:</strong> Ideal for learning Morse code, this tool provides a practical way to practice encoding and decoding messages.</li>
+    <li><strong>Accessible Anytime:</strong> The tool is available online, making it accessible from anywhere, whether you're at home, work, or on the go.</li>
+  </ul>
+
+  <h3 class="subtitle">Why Learn Morse Code?</h3>
+  <p class="description">
+    Morse code has been a fundamental part of communication for over a century. While it may seem outdated in today's digital world, it remains an essential skill in certain situations. For instance, Morse code is still used in emergency situations where traditional communication methods fail. Additionally, it’s a fun way to learn about the history of communication and enhance your problem-solving skills. The Morse Code Translator is the perfect starting point for anyone interested in exploring this fascinating and historical method of communication.
+  </p>
+
+  <h3 class="subtitle">Perfect for Beginners and Experts Alike</h3>
+  <p class="description">
+    Whether you're a complete beginner or an experienced Morse code user, this tool is designed to be simple yet powerful. Beginners can use it to learn Morse code and practice conversions, while experts can use it as a quick and reliable way to encode or decode messages on the fly.
+  </p>
+
+  <p class="closing">
+    Try out the Morse Code Translator today and unlock the secrets of this timeless communication method. It's easy to use, educational, and an essential tool for anyone fascinated by Morse code and its unique ability to transmit information through sound or light.
+  </p>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    const morseCodeDict = {
+      "A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.", "G": "--.", "H": "....", "I": "..", "J": ".---",
+      "K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.", "S": "...", "T": "-",
+      "U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--", "Z": "--..",
+      "1": ".----", "2": "..---", "3": "...--", "4": "....-", "5": ".....", "6": "-....", "7": "--...", "8": "---..", "9": "----.",
+      "0": "-----", ",": "--..--", ".": ".-.-.-", "?": "..--..", "/": "-..-.", "-": "-....-", "(": "-.--.", ")": "-.--.-", " ": "/"
+    };
+
+    function textToMorse() {
+      const textInput = document.getElementById("text-input").value.toUpperCase();
+      let morseOutput = textInput.split("").map(char => morseCodeDict[char] || "").join(" ");
+
+      document.getElementById("morse-output").textContent = morseOutput;
+      document.getElementById("morse-result").style.display = "block";
+    }
+
+    function morseToText() {
+      const morseInput = document.getElementById("morse-input").value.trim();
+      const textOutput = morseInput.split(" ").map(code => {
+        for (let char in morseCodeDict) {
+          if (morseCodeDict[char] === code) return char;
+        }
+        return "";
+      }).join("");
+
+      document.getElementById("text-output").textContent = textOutput;
+      document.getElementById("text-result").style.display = "block";
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

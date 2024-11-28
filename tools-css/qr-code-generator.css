@@ -35,7 +35,6 @@ body {
   text-align: center;
   padding: 40px 20px;
   margin-bottom: 20px;
-  border-radius: 8px;
 }
 
 .hero h1 {
@@ -113,14 +112,92 @@ footer {
   color: #fff;
 }
 
+/* QR Code Generator Section - Lun Dev Style */
+
+/* Long Description Section */
+.long-description {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tool-heading {
+  font-size: 32px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.tools-description {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.sub-heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.tool-list {
+  list-style-type: disc;
+  margin-left: 30px;
+  padding-left: 20px;
+}
+
+.tool-list-item {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.tool-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.tool-list ol {
+  margin-left: 20px;
+}
+
+.tool-list ol li {
+  margin-bottom: 10px;
+}
+
+.tool-list ul {
+  margin-bottom: 25px;
+}
+
 /* Mobile View */
 @media screen and (max-width: 768px) {
-  .tool-description p {  
-      .logo {
+.logo {
   width: 320px;
 }
 
 nav ul li a {
   font-size: 1.6rem;
 }
+
+  .long-description {
+    padding: 20px;
+  }
+
+  .tool-heading {
+    font-size: 28px;
+  }
+
+  .sub-heading {
+    font-size: 22px;
+  }
+
+  .tools-description {
+    font-size: 16px;
+  }
 }

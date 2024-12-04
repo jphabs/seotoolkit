@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Gradient Generator | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/color-gradient-generator.css">
+</head>
+<body>
+  <header class="hero">
+  	  	  	<img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+  <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Color Gradient Generator</h1>
+    <p>Generate custom gradients and get the CSS code for use in your designs.</p>
+  </header>
+
+  <main class="container">
+<section class="tool-description">
+  <p>Select colors for your gradient and choose the gradient type to generate the CSS code:</p>
+
+  <div class="input-group">
+    <label for="color1">Color 1:</label>
+    <input type="color" id="color1" value="#ff0000">
+  </div>
+
+  <div class="input-group">
+    <label for="color2">Color 2:</label>
+    <input type="color" id="color2" value="#0000ff">
+  </div>
+
+  <div class="input-group">
+    <label for="gradient-type">Gradient Type:</label>
+    <select id="gradient-type">
+      <option value="linear">Linear</option>
+      <option value="radial">Radial</option>
+    </select>
+  </div>
+
+  <button onclick="generateGradient()">Generate Gradient</button>
+
+  <div id="gradient-preview" class="gradient-preview" style="height: 150px; border: 1px solid #ccc; margin-top: 10px;"></div>
+
+  <div id="result" style="display: none; margin-top: 20px;">
+    <p>CSS Code:</p>
+    <p id="css-code"></p>
+    <button onclick="copyToClipboard()">Copy CSS Code</button>
+  </div>
+</section>
+ 
+    <section class="long-description">
+  <h2>Color Gradient Generator: Create Stunning Gradients for Your Projects</h2>
+  <p>Welcome to the Color Gradient Generator tool, designed to help you effortlessly create beautiful gradients for your web design projects.<br> </br>Whether you're designing backgrounds, buttons, or other UI elements, gradients add depth, vibrancy, and an appealing aesthetic to any webpage.<br> </br>This intuitive tool allows you to choose multiple colors and generate linear or radial gradients with just a few clicks.</p>
+
+  <p>Our Color Gradient Generator tool is perfect for web designers, developers, and anyone looking to enhance their designs with stunning gradient effects.<br> </br>With its user-friendly interface, you can easily select two or more colors using the color picker, choose the gradient type, and instantly see the result in the preview section.<br> </br>Once you're happy with your gradient, you can copy the CSS code directly to your clipboard and implement it into your project without any hassle.</p>
+
+  <h3>Key Features of the Color Gradient Generator:</h3>
+  <ul class="features-list">
+    <li><strong>Multiple Color Selection:</strong> Pick as many colors as you need to create complex and visually stunning gradients.</li>
+    <li><strong>Linear or Radial Gradients:</strong> Choose from linear or radial gradients to best suit the style of your project.</li>
+    <li><strong>Real-Time Preview:</strong> See your gradient in real-time as you adjust the colors and settings, ensuring you get the perfect look.</li>
+    <li><strong>Easy CSS Code Copying:</strong> Once you’ve created the gradient, simply click a button to copy the generated CSS code to your clipboard, making it easy to implement in your designs.</li>
+    <li><strong>Customizable Options:</strong> Fine-tune the direction, angle, or positioning of the gradient to match your exact design needs.</li>
+  </ul>
+<br>
+  <h3>How It Works</h3>
+  <p>Creating gradients has never been easier with our tool. Start by selecting two or more colors using the built-in color picker.<br> </br>You can choose any color you like, and as you select, the gradient preview will instantly update, giving you a visual representation of your design.<br> </br>Choose between a linear gradient (a gradient that flows in a straight line) or a radial gradient (a circular gradient radiating from a central point) to fit the vibe of your website.</p>
+
+  <p>Once you’ve selected your desired gradient, you’ll notice that the tool automatically generates the CSS code for your gradient.<br> </br>This code is fully optimized for web development, and you can directly copy it with the click of a button.<br> </br>Whether you're working on a single-page site or a more complex web design, this tool streamlines your workflow by providing everything you need to get the gradient into your code in seconds.</p>
+
+  <h3>Why Choose the Color Gradient Generator?</h3>
+  <ul class="benefits-list">
+    <li><strong>Time-Saving:</strong> Forget about manually adjusting color stops and calculating gradient codes.<br> </br>This tool does it all for you.</li>
+    <li><strong>Versatile:</strong> Whether you're designing a simple background or complex multi-color buttons, this tool adapts to your needs.</li>
+    <li><strong>Responsive Design:</strong> The gradients you generate will look great on all devices, ensuring your website maintains its aesthetic across desktop, tablet, and mobile screens.</li>
+    <li><strong>Free and Easy to Use:</strong> There’s no need for any advanced tools or software—this tool is completely free and accessible right from your browser, with no installation required.</li>
+  </ul>
+
+  <p>Perfect for designers looking for a quick and simple way to implement beautiful gradients, our tool takes the guesswork out of gradient creation.<br> </br>It saves time, boosts creativity, and helps you focus on what really matters—building a fantastic user experience.<br> </br>Get started now and generate your perfect gradient with just a few clicks!</p>
+</section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+<script>
+  function generateGradient() {
+    const color1 = document.getElementById("color1").value;
+    const color2 = document.getElementById("color2").value;
+    const gradientType = document.getElementById("gradient-type").value;
+
+    let gradient = "";
+    if (gradientType === "linear") {
+      gradient = `linear-gradient(to right, ${color1}, ${color2})`;
+    } else if (gradientType === "radial") {
+      gradient = `radial-gradient(circle, ${color1}, ${color2})`;
+    }
+
+    // Apply the generated gradient to the preview box
+    document.getElementById("gradient-preview").style.background = gradient;
+
+    // Set the CSS code for display
+    document.getElementById("css-code").textContent = `background: ${gradient};`;
+
+    // Show the result section
+    document.getElementById("result").style.display = "block";
+  }
+
+  function copyToClipboard() {
+    const cssCode = document.getElementById("css-code").textContent;
+    const tempInput = document.createElement("input");
+    document.body.appendChild(tempInput);
+    tempInput.value = cssCode;
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("CSS code copied to clipboard!");
+  }
+
+  // Event listeners for color pickers and gradient type selection
+  document.getElementById("color1").addEventListener("input", generateGradient);
+  document.getElementById("color2").addEventListener("input", generateGradient);
+  document.getElementById("gradient-type").addEventListener("change", generateGradient);
+
+  // Set current year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

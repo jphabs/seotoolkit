@@ -1,0 +1,256 @@
+/* General Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 720px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #4a90e2;
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+/* Tool Description Section */
+.tool-description {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.tool-description p {
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+/* Labels and Inputs */
+label {
+  font-size: 1em;
+  margin-right: 10px;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+#gradient-type {
+	padding: 10px;
+    padding-right: 5px;
+	}
+
+input[type="color"],
+select {
+  margin: 5px 0 15px;
+  width: 100%;
+}
+
+/* Button Styles */
+button {
+  width: 100%;
+  display: inline-block;
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #357ab8;
+}
+
+/* Result Display */
+#result {
+  margin-top: 15px;
+  color: #4a90e2;
+}
+
+#result p {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#css-code {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  color: #333;
+}
+
+/* Gradient Preview */
+.gradient-preview {
+  height: 200px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #ff0000, #0000ff);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px 20px;
+  background-color: #333;
+  color: #fff;
+  margin-top: 40px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  font-size: 0.9em;
+}
+
+/* Long Description Section */
+.long-description {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.long-description h2 {
+  font-size: 32px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.long-description p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.long-description .sub-heading {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.long-description .features-list,
+.long-description .benefits-list {
+  list-style-type: disc;
+  margin-left: 30px;
+  padding-left: 20px;
+}
+
+.long-description .features-list li,
+.long-description .benefits-list li {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.long-description .features-list li:last-child,
+.long-description .benefits-list li:last-child {
+  margin-bottom: 0;
+}
+
+.long-description .features-list ol,
+.long-description .benefits-list ol {
+  margin-left: 20px;
+}
+
+.long-description .features-list ol li,
+.long-description .benefits-list ol li {
+  margin-bottom: 10px;
+}
+
+.long-description .features-list ul,
+.long-description .benefits-list ul {
+  margin-bottom: 25px;
+}
+
+/* Mobile View */
+@media screen and (max-width: 768px) {
+  .tool-description p {
+    font-size: 0.95em;
+  }
+
+  button {
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.8em;
+  }
+  
+        .logo {
+  width: 320px;
+}
+
+nav ul li a {
+  font-size: 1.6rem;
+}
+}

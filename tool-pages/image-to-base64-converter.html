@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to Base64 Converter | SEO Toolkit</title>
+  <link rel="stylesheet" href="../tools-css/image-to-base64-converter.css">
+</head>
+<body>
+  <header class="hero">
+    <img src="../images/seotoolkit-logo.png" alt="SEO Toolkit Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Image to Base64 Converter</h1>
+    <p>Convert images into Base64 strings to embed them directly into your HTML or CSS.</p>
+  </header>
+
+  <main class="container">
+    <section class="tool-description">
+      <p>Upload an image and get its Base64 string:</p>
+
+      <div class="input-group">
+        <label for="image-upload">Choose an image:</label>
+        <input type="file" id="image-upload" accept="image/*">
+      </div>
+
+      <button onclick="convertToBase64()">Convert to Base64</button>
+
+      <div id="result" style="display: none;">
+        <p>Base64 String:</p>
+        <textarea id="base64-output" readonly></textarea>
+        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button onclick="resetTool()">Reset</button>
+      </div>
+    </section>
+    
+    <section class="long-description">
+  <h2>Image to Base64 Converter</h2>
+  <p>Our <strong>Image to Base64 Converter</strong> is a powerful tool designed to help developers and web designers easily convert images into Base64 strings.<br> </br>By encoding your images into Base64 format, you can embed them directly into HTML or CSS files, which can optimize your website’s performance and eliminate the need for additional image requests during page load.</p>
+  
+  <p>This tool is ideal for scenarios where you want to reduce HTTP requests, enhance page loading times, or store images in a more efficient format.<br> </br>Instead of linking to external image files, the Base64 encoding ensures that your images are stored within the web page itself, making them instantly accessible without requiring separate image loading.<br> </br>This can significantly improve your website’s speed and user experience, especially for small to medium-sized images like icons or logos.</p>
+
+  <h3>Key Features</h3>
+  <ul class="features-list">
+    <li>Easy-to-use image upload functionality.</li>
+    <li>Instant conversion of images into Base64 format.</li>
+    <li>Display of the generated Base64 string for quick copy-pasting.</li>
+    <li>Option to upload a new image or reset the tool for fresh conversions.</li>
+    <li>Supports various image formats, ensuring wide compatibility.</li>
+  </ul>
+
+  <h3>How It Works</h3>
+  <p>To use the Image to Base64 Converter, simply upload the image you want to convert.<br> </br>The tool will automatically process the image and generate a Base64 string.<br> </br>This string can then be copied and embedded directly into your HTML or CSS, reducing the need for external image requests and improving page performance.</p>
+
+  <h3>Why Use Base64 Encoding?</h3>
+  <p>Base64 encoding is a method of converting binary data (like images) into a text format that can be included in web pages.<br> </br>By encoding your images in this way, you eliminate the need for additional HTTP requests to external image files, which can speed up load times and enhance user experience.<br> </br>This is particularly useful when you are dealing with small images such as icons or when working on offline web applications.</p>
+
+  <p>In addition to performance improvements, using Base64-encoded images can simplify your code by embedding the image directly into the page.<br> </br>No more worrying about broken image links or external image hosting services!</p>
+
+  <h3>Use Cases</h3>
+  <ul class="use-case-list">
+    <li><strong>Web Developers:</strong> Embed logos, icons, and other small images directly into HTML/CSS for faster page loads and cleaner code.</li>
+    <li><strong>Mobile App Developers:</strong> Convert images to Base64 format for use in offline apps or to optimize load times.</li>
+    <li><strong>SEO Professionals:</strong> Improve your website’s page load speed by reducing external HTTP requests.</li>
+  </ul>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> SEO Toolkit by Jphabs Khalifa.</p>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function convertToBase64() {
+      const fileInput = document.getElementById("image-upload");
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Please choose an image.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const base64String = event.target.result.split(',')[1]; // Get Base64 part
+        document.getElementById("base64-output").value = base64String;
+        document.getElementById("result").style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function copyToClipboard() {
+      const base64Code = document.getElementById("base64-output").value;
+      const tempInput = document.createElement("input");
+      document.body.appendChild(tempInput);
+      tempInput.value = base64Code;
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert("Base64 string copied to clipboard!");
+    }
+
+    function resetTool() {
+      document.getElementById("image-upload").value = "";
+      document.getElementById("base64-output").value = "";
+      document.getElementById("result").style.display = "none";
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
